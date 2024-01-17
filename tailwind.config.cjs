@@ -5,6 +5,7 @@ module.exports = {
     extend: {},
     colors: {
       white: '#FFF',
+      black: '#000',
 
       gray900: '#121214',
       gray800: '#202024',
@@ -13,6 +14,15 @@ module.exports = {
 
       green500: '#00875F',
       green300: '#00B37E',
+      green100: '#1EA483',
+
+      purple300: '#7465D4',
+    },
+    fontSize: {
+      md: '1.125rem',
+      lg: '1.25rem',
+      xl: '1.5rem',
+      '2xl': '2rem',
     },
   },
   plugins: [],

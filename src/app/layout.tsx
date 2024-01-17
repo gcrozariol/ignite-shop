@@ -1,7 +1,10 @@
+import './globals.css'
+
 import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
+import Image from 'next/image'
 
-import './globals.css'
+import logoImg from '../assets/logo.svg'
 
 const roboto = Roboto({
   weight: ['400', '700'],
@@ -23,7 +26,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head />
-      <body className={roboto.className}>{children}</body>
+      <body className={roboto.className}>
+        <div className="flex min-h-screen flex-col items-start justify-center">
+          <header className="mx-auto w-full max-w-[1180px] px-0 py-8">
+            <Image src={logoImg} alt="" />
+          </header>
+          {children}
+        </div>
+      </body>
     </html>
   )
 }
