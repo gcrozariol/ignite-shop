@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { notFound } from 'next/navigation'
 
 import { getProductById } from '@/lib/stripe/get-product-by-id'
 
@@ -6,6 +7,10 @@ export const revalidate = 60 * 60 * 1 // revalidate data after 1 hour
 
 export default async function Page({ params }: { params: { id: string } }) {
   const product = await getProductById(params.id)
+
+  if (!product) {
+    return notFound()
+  }
 
   return (
     <main className="mx-auto grid max-w-[1180px] grid-cols-2 gap-16">
