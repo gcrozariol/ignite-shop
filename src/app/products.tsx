@@ -4,8 +4,9 @@ import 'keen-slider/keen-slider.min.css'
 
 import { useKeenSlider } from 'keen-slider/react'
 import Image from 'next/image'
+import Link from 'next/link'
 
-interface Product {
+export interface Product {
   id: string
   name: string
   imageUrl: string
@@ -26,7 +27,11 @@ export default function Products({ products }: { products: Product[] }) {
       ref={sliderRef}
     >
       {products.map((product) => {
-        return <Product key={product.id} product={product} />
+        return (
+          <Link key={product.id} href={`/product/${product.id}/`}>
+            <Product product={product} />
+          </Link>
+        )
       })}
     </main>
   )
@@ -34,7 +39,7 @@ export default function Products({ products }: { products: Product[] }) {
 
 function Product({ product }: { product: Product }) {
   return (
-    <a className="keen-slider__slide relative flex transform cursor-pointer items-center justify-center rounded-[8px] bg-gradient-to-b from-green100 to-purple300 py-24 *:hover:translate-y-0 *:hover:opacity-100">
+    <div className="keen-slider__slide relative flex transform cursor-pointer items-center justify-center rounded-[8px] bg-gradient-to-b from-green100 to-purple300 py-24 *:hover:translate-y-0 *:hover:opacity-100">
       <Image
         className="object-cover"
         src={product.imageUrl}
@@ -47,6 +52,6 @@ function Product({ product }: { product: Product }) {
         <strong className="text-lg">{product.name}</strong>
         <span className="text-xl font-bold text-green300">{product.price}</span>
       </footer>
-    </a>
+    </div>
   )
 }
